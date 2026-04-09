@@ -205,3 +205,29 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Environment variables (API keys, secrets — NEVER upload these)
+.env
+.env.local
+.env.*
+
+# Model weights or large files (Tribe V2 weights if downloaded locally)
+*.bin
+*.pt
+*.onnx
+*.safetensors
+models/
+
+# Uploaded user content (videos, images, audio — don't commit these)
+uploads/
+temp/
+output/
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Node / frontend (if you add a frontend later)
+node_modules/
+dist/
+build/
