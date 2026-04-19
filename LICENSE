@@ -20,5 +20,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Note: This project uses Meta Tribe V2, which is subject to Meta's non-commercial license.
-      This project may not be used for commercial purposes
+Note: The repository code remains under the MIT License above.
+      If you download or run Meta Llama 3.2 model weights, those weights are governed separately
+      by Meta's Llama 3.2 Community License and Acceptable Use Policy.

@@ -211,7 +211,7 @@ __marimo__/
 .env.local
 .env.*
 
-# Model weights or large files (Tribe V2 weights if downloaded locally)
+# Model weights or large files (for local Llama downloads or other model assets)
 *.bin
 *.pt
 *.onnx
@@ -222,6 +222,7 @@ models/
 uploads/
 temp/
 output/
+backend/data/
 
 # OS junk files
 .DS_Store
