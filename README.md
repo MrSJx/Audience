@@ -1,169 +1,160 @@
-<div align="center">
+# Audience
 
-# 🎭 Audience
+Audience is an AI product for simulating how people may react to content before it is posted online.
 
-### *Know how the world reacts — before you post.*
+The project is now aligned around `Meta Llama 3.2 3B` for local report generation.
 
-![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT%20(Non--Commercial)-blue?style=for-the-badge)
-![Model](https://img.shields.io/badge/Model-Meta%20Tribe%20V2-purple?style=for-the-badge)
-![Made With](https://img.shields.io/badge/Made%20with-Python-green?style=for-the-badge)
+This repository now includes all 10 phases of the MVP plan from [structure guidelines.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/structure guidelines.md>).
 
-</div>
+## Current Status
 
----
+- Phase 1 scaffold completed
+- Phase 2 MVP flow documented
+- Phase 3 analyzer pipeline added for image and short video
+- Phase 4 report schema stabilized with deterministic example output
+- Phase 5 API endpoints added, including upload analysis and report retrieval
+- Phase 6 frontend MVP now uploads files and renders saved reports
+- Phase 7 prompt reliability layer added with structured prompt and parser modules
+- Phase 8 SQLite persistence stores generated reports locally
+- Phase 9 core flow testing now covers high-value failure and retrieval paths
+- Phase 10 product wording, setup guidance, and UI clarity refinements completed
+- Phase 11 Simulation 2.0 contract added for future multi-agent runs
+- Phase 12 multi-agent persistence foundation added without breaking MVP report history
+- Local `Llama 3.2` report generation path added through Ollama
 
-## 📌 What is Audience?
+## Project Structure
 
-**Audience** is an open-source AI platform that simulates how a real audience would react to your content — *before you upload it anywhere.*
-
-Upload a video, image, audio file, animation, or artwork. Choose your target platform. Get a full **Audience Reaction Report** — with emotion scores, peak moment timestamps, dopamine hit detection, simulated comments, and a demographic breakdown of who will love it and who will scroll past.
-
-No sugarcoating. No empty praise. Just honest, data-driven feedback from a simulated crowd.
-
----
-
-## ✨ Features
-
-- 🎥 **Multi-media support** — Video, Image, Audio, Animation, Artwork
-- 📱 **Platform-aware analysis** — Tune reactions for Instagram, YouTube, TikTok, and more
-- ⚡ **Peak Moment Detection** — Timestamps of when your audience spikes or drops off
-- 📊 **Emotion Score Dashboard** — Interest, Excitement, Happiness, Dopamine Hit, Boring Rate
-- 💬 **Simulated Comment Section** — Real-feeling comments, arguments included
-- 👥 **Demographic Breakdown** — Age groups, gender perception, regional/cultural flags
-- 🔍 **Honest Critique** — Actionable feedback with no sugarcoating
-- 🏆 **Final Verdict + Performance Prediction** — Viral potential, retention rate, share likelihood
-
----
-
-## 🖼️ Example Output
-
-```
-📊 AUDIENCE REACTION REPORT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🎯 Content Summary:
-A 30-second Instagram Reel featuring fast-cut dark humor about
-Monday mornings. Strong hook, slow middle, punchy ending.
-
-⚡ Peak Moments:
-🔥 [0:04] Opening hook lands hard → Immediate interest spike
-🔥 [0:18] Dark humor punchline → Dopamine hit expected
-😐 [0:11] Slow transition → Possible scroll-away zone
-
-📈 Emotion Scores:
-Interest Score         ████████░░  78/100
-Excitement Score       ███████░░░  68/100
-Happiness Score        ████████░░  75/100
-Boring Rate            ███░░░░░░░  28/100
-Dopamine Hit Score     ████████░░  80/100
-Re-watch Potential     ███████░░░  70/100
-
-💬 Simulated Comments (Instagram):
-@user_98x: bro the timing at 0:18 was PERFECT 💀
-@reel_critic: first 5 seconds almost lost me ngl
-@darkhumorfan: no because why is this so accurate 💀
-@just_scrolling99: i've watched this 4 times already why
-@real_talk_22: the editing in the middle dragged a bit
-
-🏆 Final Verdict:
-"Strong hook, shaky middle, great ending — one edit away from viral."
-
-📊 Predicted Performance on Instagram Reels:
-Viral Potential    ██████░░░░  62%
-Retention Rate     █████░░░░░  50%
-Share Likelihood   ███████░░░  72%
+```text
+Audience/
+|-- backend/
+|   |-- app/
+|   |   |-- api/
+|   |   |-- core/
+|   |   |-- models/
+|   |   |-- services/
+|   |   |-- utils/
+|   |   `-- main.py
+|   |-- tests/
+|   `-- requirements.txt
+|-- frontend/
+|   |-- src/
+|   |-- index.html
+|   `-- package.json
+|-- docs/
+|-- LICENSE
+|-- README.md
+`-- structure guidelines.md
 ```
 
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| AI Model | Meta Tribe V2 |
-| Backend | Python |
-| Frontend | *(Coming soon)* |
-| License | MIT (Non-Commercial) |
-
----
-
-## 🚀 Getting Started
-
-> ⚠️ This project is currently in early development. Full setup instructions will be added as the project progresses.
-
-### Prerequisites
-- Python 3.10 or above
-- Git installed on your machine
-- Basic understanding of running terminal commands
-
-### Installation
+## Backend Quick Start
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/audience.git
-
-# 2. Navigate into the project folder
-cd audience
-
-# 3. Install dependencies (once requirements.txt is added)
+cd backend
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
-
-# 4. Run the app
-python main.py
+ollama run llama3.2
+uvicorn app.main:app --reload
 ```
 
-> Full setup guide will be added in the `/docs` folder as development progresses.
+Optional backend environment variables:
 
----
-
-## 📁 Project Structure
-
-```
-audience/
-│
-├── backend/          → Core AI logic and API integration
-├── frontend/         → User interface
-├── docs/             → Documentation and guides
-├── .gitignore
-├── LICENSE
-└── README.md
+```bash
+AUDIENCE_OLLAMA_BASE_URL=http://127.0.0.1:11434
+AUDIENCE_OLLAMA_MODEL=llama3.2
+AUDIENCE_USE_HEURISTIC_FALLBACK=false
 ```
 
----
+Once running, open:
 
-## ⚖️ License & Legal
+- `http://127.0.0.1:8000/`
+- `http://127.0.0.1:8000/health`
+- `http://127.0.0.1:8000/contract`
+- `http://127.0.0.1:8000/report-schema`
+- `http://127.0.0.1:8000/simulation-schema`
+- `http://127.0.0.1:8000/docs`
 
-This project is released under the **MIT License** for open-source and educational use.
+## Frontend Quick Start
 
-> **Important:** This project uses **Meta Tribe V2**, which is governed by Meta's non-commercial license. Therefore, **this project may not be used for any commercial purpose.** It is strictly a learning and open-source initiative.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-See the [LICENSE](./LICENSE) file for full details.
+The frontend is intentionally minimal in Phase 1 and serves as the starter surface for the future upload and report flow.
 
----
+The current frontend is now a functional MVP client for the backend upload and report flow.
 
-## 🙌 Contributing
+The multi-agent runtime is not implemented yet, but the Phase 11 contract and Phase 12 persistence foundation are now in place for that next layer of work.
 
-We are beginners learning as we build — and we welcome everyone at any skill level!
+## MVP Contract
 
-If you have ideas, bug reports, or want to contribute code:
-1. **Fork** this repo
-2. Create a **new branch** (`git checkout -b feature/your-idea`)
-3. **Commit** your changes
-4. Open a **Pull Request** — describe what you changed and why
+Phase 2 locks the first supported product flow:
 
-You can also open an **Issue** or start a **Discussion** if you have questions or suggestions.
+- platform: `instagram_reels`
+- supported media: `image`, `short_video`
+- upload mode: one file per request
+- response shape: structured audience reaction report
 
----
+The detailed contract is documented in [docs/phase-2-mvp-flow.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-2-mvp-flow.md>).
 
-## 👥 Team
+## Analyzer And Report Foundation
 
-Built with curiosity and zero prior AI/ML experience — learning in public, one commit at a time.
+Phases 3 and 4 add:
 
----
+- normalized internal media analysis output
+- heuristic image and short video signal extraction
+- sampled frame analysis for video
+- transcript placeholder integration
+- stable report schema and example response
+- local Llama 3.2 report generation with the same response contract
 
-<div align="center">
+Supporting docs:
 
-*🎭 Audience — Simulating the crowd so you don't have to guess.*
+- [docs/phase-3-analyzer.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-3-analyzer.md>)
+- [docs/phase-4-report-schema.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-4-report-schema.md>)
 
-</div>
+## API And Persistence
+
+Phases 5 through 8 add:
+
+- `POST /analyze` for upload-driven analysis
+- `GET /report/{id}` for persisted report retrieval
+- `GET /reports` for recent report listing
+- startup SQLite initialization
+- local upload storage under `backend/uploads/`
+- local database storage under `backend/data/audience.db`
+
+Supporting docs:
+
+- [docs/phase-5-api.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-5-api.md>)
+- [docs/phase-6-frontend.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-6-frontend.md>)
+- [docs/phase-7-prompt-reliability.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-7-prompt-reliability.md>)
+- [docs/phase-8-persistence.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-8-persistence.md>)
+
+## Testing And Refinement
+
+The final roadmap phases add:
+
+- stronger automated coverage around the real upload-to-report path
+- documented known limitations
+- clearer user-facing wording and error messages
+- improved score framing so the MVP reads as guidance, not certainty
+
+Supporting docs:
+
+- [docs/phase-9-testing.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-9-testing.md>)
+- [docs/phase-10-refinement.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-10-refinement.md>)
+- [docs/phase-11-simulation-contract.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-11-simulation-contract.md>)
+- [docs/phase-12-multi-agent-persistence.md](</C:/Users/swapn/OneDrive/Documents/GitHub/Audience/docs/phase-12-multi-agent-persistence.md>)
+
+## Current Outcome
+
+The MVP is locally runnable as a narrow but coherent first version, with report generation aimed at a local Llama 3.2 workflow.
+
+## Notes
+
+- The MVP remains intentionally narrow.
+- Phase 1 avoids implementing business logic or media analysis.
+- The backend and frontend structure are designed to support later phases without major reshuffling.
